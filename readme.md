@@ -11,3 +11,7 @@
     docker logs node-app
 ## execute a command on an container
     docker exec -it node-app bash
+## read only volume
+    docker run --name node-app -d -p 3001:3000 -v $(pwd):/app:ro -v /app/node_modules  node-app-image
+## use env variable
+    docker run --name node-app -d -p 3001:4000 -v $(pwd):/app:ro -v /app/node_modules -e PORT=4000  node-app-image
