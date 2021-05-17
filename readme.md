@@ -29,3 +29,7 @@
     docker volume rm name
 ## delete the container and the volume associated with it
     docker rm node-app -fv
+## run a container from a docker-compose.yml file
+    docker-compose up
+## remove a container with its volumes
+    docker-compose down -v
