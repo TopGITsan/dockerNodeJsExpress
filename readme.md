@@ -15,3 +15,7 @@
     docker run --name node-app -d -p 3001:3000 -v $(pwd):/app:ro -v /app/node_modules  node-app-image
 ## use env variable
     docker run --name node-app -d -p 3001:4000 -v $(pwd):/app:ro -v /app/node_modules -e PORT=4000  node-app-image
+### show the env variables on linux
+    printenv
+## use env file
+    docker run --name node-app -d -p 3001:4000 -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env  node-app-image
