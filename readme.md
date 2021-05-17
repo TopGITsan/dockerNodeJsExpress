@@ -33,3 +33,10 @@
     docker-compose up
 ## remove a container with its volumes
     docker-compose down -v
+## use dev conf and prod conf for docker
+    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d 
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d 
+### in prod you need to rebuild the image because there is no bind mount
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+## remove container
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
