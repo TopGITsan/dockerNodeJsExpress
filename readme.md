@@ -19,3 +19,13 @@
     printenv
 ## use env file
     docker run --name node-app -d -p 3001:4000 -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env  node-app-image
+## list all the running containers
+    docker ps
+## list all the volumes
+    docker volume ls
+## remove all unnecessary volumes 
+    docker volume prune
+## remove a volume
+    docker volume rm name
+## delete the container and the volume associated with it
+    docker rm node-app -fv
