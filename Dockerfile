@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /app
+WORKDIR /opt/node_mongo_app
 COPY package.json .
 #RUN npm install
 

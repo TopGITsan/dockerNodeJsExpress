@@ -5,6 +5,8 @@ services:
       context: .
       args: 
         NODE_ENV: production
+    image: node-app:1-prod0.1
+    read_only: true
     environment:
       - NODE_ENV=production
     command: node index.js

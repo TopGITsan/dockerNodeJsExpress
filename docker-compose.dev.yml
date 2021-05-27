@@ -5,11 +5,10 @@ services:
       context: .
       args: 
         NODE_ENV: development
-    image: node-app:dev1
-    read_only: true
+    image: node-app:1-dev0.1
     volumes:
-      - ./:/app
-      - /app/node_modules
+      - ./:/opt/node_mongo_app
+      - /opt/node_mongo_app/node_modules
     environment:
       - NODE_ENV=development
     command: npm run dev
