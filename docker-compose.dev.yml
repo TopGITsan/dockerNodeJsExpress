@@ -5,8 +5,10 @@ services:
       context: .
       args: 
         NODE_ENV: development
+    image: node-app:dev1
+    read_only: true
     volumes:
-      - ./:/app:ro
+      - ./:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
