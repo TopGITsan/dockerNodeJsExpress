@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 mongoose
-  .connect("mongodb://topdevop:topdevoppass@172.25.0.2:27017/?authSource=admin", {
+  .connect("mongodb://topdevop:topdevoppass@mongo:27017/?authSource=admin", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

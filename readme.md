@@ -40,3 +40,7 @@
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ## remove container
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
+## show all networks
+    docker network ls
+## inspect a network
+    docker network inspect network_id
