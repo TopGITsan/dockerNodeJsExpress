@@ -11,6 +11,12 @@ services:
       - node_modules:/opt/node_mongo_app/node_modules
     environment:
       - NODE_ENV=development
+      - MONGO_USER
+      - MONGO_PASSWORD
     command: npm run dev
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
 volumes:
   node_modules:
