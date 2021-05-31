@@ -24,6 +24,8 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   console.log("request to root");
   res.send("<h2>Hi there</h2>");
