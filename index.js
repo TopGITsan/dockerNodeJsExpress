@@ -42,6 +42,8 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.enable("trust proxy");
+
 app.use(
   session({
     store: new redisStore({ client: redisClient }),
@@ -58,8 +60,8 @@ app.use(
 app.use(express.json());
 
 app.get("/api/v1", (req, res) => {
-  console.log("request to root");
   res.send("<h2>Hi there</h2>");
+  console.log("request to root, yeah it ran");
 });
 
 app.use("/api/v1/posts", postRouter);
