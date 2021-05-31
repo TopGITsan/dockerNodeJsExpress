@@ -1,9 +1,12 @@
 version: "3"
-services: 
+services:
+  nginx:
+    ports:
+      - "80:80" 
   node-app:
     build:
       context: .
-      args: 
+      args:
         NODE_ENV: production
     image: node-app:1-prod0.1
     read_only: true
