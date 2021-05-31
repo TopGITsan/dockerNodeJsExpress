@@ -8,7 +8,9 @@ services:
     image: node-app:1-dev0.1
     volumes:
       - ./:/opt/node_mongo_app
-      - /opt/node_mongo_app/node_modules
+      - node_modules:/opt/node_mongo_app/node_modules
     environment:
       - NODE_ENV=development
     command: npm run dev
+volumes:
+  node_modules:
