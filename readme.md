@@ -91,3 +91,35 @@
 ##### close terminal session and reopen
 ##### shh back in
 ##### printenv
+##### make a folder on WORKDIR /opt/node_mongo_app
+##### clone repo
+```git clone https://github.com/profile/repo.git```
+##### build and run containers
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d```
+##### rebuild only a service
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build node-app```
+##### rebuild only a service, do not check others
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --no-deps node-app```
+##### rebuild a container for whatever reason
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate node-app```
+##### rebuild a container for whatever reason but do not rebuild others
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate --no-deps node-app```
+## but, never build an image on your production resource
+### create a docker registry or use docker hub
+#### create a new repository
+#### from dev env log in
+```docker login```
+#### rename image
+```docker image tag current-image-name username/name-of-the-repository```
+#### push a image to your new repository NAME= username/name-of-the-image:tag-name
+```docker push [OPTIONS] NAME[:TAG]```
+#### rebuild the prod image after changes
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml build```
+#### rebuild the prod image after changes for just one of our services
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml build node-app```
+#### push the image to docker hub
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app```
+#### from the prod server
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app```
+####
+```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps node-app```
