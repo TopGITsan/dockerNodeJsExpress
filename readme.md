@@ -121,5 +121,38 @@
 ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app```
 #### from the prod server
 ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app```
-####
+#### rebuild the container with the new pulled image
 ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps node-app```
+
+### automate docker pull image with docker watchtower https://containrrr.dev/watchtower/
+#### use container watchtower to watch over other containers in docker hub
+```
+docker run -d \
+  --name watchtower \
+  -e WATCHTOWER_TRACE=true \
+  -e WATCHTOWER_DEBUG=true \
+  -e WATCHTOWER_POLL_INTERVAL=50 \
+  -V /var/run/docker.sock:/var/run/docker.sock containerrr/watchtower container_name
+```
+### docker-compose is not for production ready app, is a little tool for little projects
+### push out changes to our production server without experiencing any loss
+### rolling updates with kubernetes or docker swarm: a container orchestraitor
+for default docker swarm is disabled
+```docker info```
+#### to enable swarm
+```docker swarm init```
+```docker swarm init --advertise-addr pubblic_ip_addr```
+```docker service --help```
+
+#### after the setup of the docker-compose.prod.yml file to bring the containers up with swarm use:
+```docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml stackName```
+
+#### list all of the node within out docker swarm
+```docker node ls```
+#### list all of the stacks
+```docker stack ls```
+#### list all of the services in a stack
+```docker stack services stackName```
+```docker services ls```
+#### list all of the tasks
+```docker stack ps stackName```
