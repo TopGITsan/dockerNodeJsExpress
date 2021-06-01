@@ -49,3 +49,45 @@
 ## -V, --renew-anon-volumes   
 ## Recreate anonymous volumes instead of retrieving data from the previous containers.
     docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V
+
+## Deploy in prod
+### login ur server 
+```ssh root@123.123.12.123```
+### get docker installed docs.docker.com
+#### get.docker.com has a script that installs docker for u automatically
+```curl -fsSL https://get.docker.com -o get-docker.sh```
+#### run the file, execute the script
+```sh get-docker.sh```
+#### check if docker and docker-compose is installed
+```docker --version```
+```docker-compose -v```
+#### https://docs.docker.com/compose/install/
+#### download the current stable release of Docker Compose
+```sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
+##### Apply executable permissions to the binary:
+```sudo chmod +x /usr/local/bin/docker-compose```
+#### create a git repository for the app
+##### locally create repo
+```git init```
+##### add all files
+```git add --all```
+##### commit your files
+```git commit -m "first commit" ```
+##### create a new branch
+```git branch -M main ```
+##### set remote repo
+```git remote add origin https://github.com/profile/repo.git```
+##### push changes to online repo
+```git push -u origin main```
+##### configure env var on the server, ubuntu machine
+```export REDIS_SECRET="hello"```
+  - does not persist on reboot
+##### show env var
+```printenv```
+##### create env file and store them in it
+```vi .env```
+##### open .profile file, on the bottom create a simple config
+```set -o allexport; source /path/to/.env; set +o allexport```
+##### close terminal session and reopen
+##### shh back in
+##### printenv
