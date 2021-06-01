@@ -46,3 +46,6 @@
     docker network inspect network_id
 ## scale backend, bring up two instances, proxy call with nginx
     docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-app=2
+## -V, --renew-anon-volumes   
+## Recreate anonymous volumes instead of retrieving data from the previous containers.
+    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V
